@@ -28,10 +28,10 @@ project_command_download_path = HOME/"atk"/"temp"/"project.rb"
 download('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/interface/project' , as: project_command_download_path)
 set_command("project", IO.read(project_command_download_path))
 
-# --
+# >
 doubledash_command_download_path = HOME/"atk"/"temp"/"doubledash_command.rb"
 download('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/interface/--'      , as: doubledash_command_download_path)
-set_command("--", IO.read(doubledash_command_download_path))
+set_command(">", IO.read(doubledash_command_download_path))
 
 # 
 # print success
