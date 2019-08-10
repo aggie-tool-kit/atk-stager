@@ -91,6 +91,6 @@ scoop install python
 # install asciimatics and ruamel.yaml
 & "$Home\scoop\apps\python\current\Scripts\pip.exe" install asciimatics ruamel.yaml
 # download and run the script
-$install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/setup/setup.rb')
+$install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb')
 New-Item -Path . -Name "setup.rb" -ItemType "file" -Value $install_script
 ruby setup.rb
