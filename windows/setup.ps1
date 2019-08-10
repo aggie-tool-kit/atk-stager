@@ -87,7 +87,7 @@ scoop install msys2
 # create the atk temp directory if it doesn't exist
 md "$Home\atk\temp"
 # delete any previous setup
-del "$Home\atk\temp\setup.rb"
+del /q "$Home\atk\temp\setup.rb"
 # download and run the script
 $install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb')
 New-Item -Path . -Name "$Home\atk\temp\setup.rb" -ItemType "file" -Value $install_script
