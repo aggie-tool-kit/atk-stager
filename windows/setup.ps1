@@ -87,7 +87,10 @@ scoop install msys2
 # install atk_toolbox
 & "$Home\scoop\apps\ruby\current\bin\gem.cmd" install atk_toolbox
 # create the atk temp directory if it doesn't exist
-md "$Home\atk\temp"
+$temp_dir = "$Home\atk\temp"
+if(!(Test-Path -Path $temp_dir )){
+    md $temp_dir
+}
 # delete any previous setup
 del /q "$Home\atk\temp\setup.rb"
 # download and run the script
