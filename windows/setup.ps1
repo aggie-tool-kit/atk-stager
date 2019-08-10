@@ -96,4 +96,4 @@ Remove-Item -Path "$Home\atk\temp\setup.rb" -Force -ErrorAction SilentlyContinue
 # download and run the script
 $install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb')
 New-Item -Path "$Home\atk\temp" -Name "setup.rb" -ItemType "file" -Value $install_script
-ruby setup.rb
+ruby "$Home\atk\temp\setup.rb"
