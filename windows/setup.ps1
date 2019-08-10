@@ -1,7 +1,5 @@
 # TODO:
     # - check if ruby is already installed, and what version
-    # - check if python is already installed, and what version
-    # - cleanup the setup.rb download
 
 # 
 # install scoop
@@ -86,11 +84,11 @@ scoop install msys2
 " | msys2
 # install atk_toolbox
 & "$Home\scoop\apps\ruby\current\bin\gem.cmd" install atk_toolbox
-# install python3 & pip3
-scoop install python
-# install asciimatics and ruamel.yaml
-& "$Home\scoop\apps\python\current\Scripts\pip.exe" install asciimatics ruamel.yaml
+# create the atk temp directory if it doesn't exist
+md "$Home\atk\temp"
+# delete any previous setup
+del "$Home\atk\temp\setup.rb"
 # download and run the script
 $install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb')
-New-Item -Path . -Name "setup.rb" -ItemType "file" -Value $install_script
+New-Item -Path . -Name "$Home\atk\temp\setup.rb" -ItemType "file" -Value $install_script
 ruby setup.rb
