@@ -1,4 +1,14 @@
 Current Plan:
+- test installtion on linux
+- get the update command working
+- test the update command on all OS's
+- create a versioning system for atk
+- create a seperate organization for atk-core
+- create a package
+- test install the package on all OS's
+- create a atk package template
+
+
 - get the basic installers working
 - add uninstall support
 - get setup working for ubuntu
