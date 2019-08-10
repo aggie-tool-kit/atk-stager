@@ -28,10 +28,10 @@ project_command_download_path = HOME/"atk"/"temp"/"project.rb"
 FS.download('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/project' , to: project_command_download_path)
 set_command("project", FS.read(project_command_download_path))
 
-# >
+# @
 local_command_download_path = HOME/"atk"/"temp"/"doubledash_command.rb"
-FS.download('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/>'      , to: local_command_download_path)
-set_command(">", FS.read(local_command_download_path))
+FS.download('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/@'      , to: local_command_download_path)
+set_command("@", FS.read(local_command_download_path))
 
 # 
 # print success
