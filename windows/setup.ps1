@@ -68,7 +68,9 @@ goto main
     echo | set /p dummy="Done"
     echo .
 "@
-New-Item -Path "$Home\AppData\local\Microsoft\WindowsApps\" -Name "RefreshEnv.cmd" -ItemType "file" -Value $reset_command
+if (-not (cmd.exe /c "where RefreshEnv")) {
+    New-Item -Path "$Home\AppData\local\Microsoft\WindowsApps\" -Name "RefreshEnv.cmd" -ItemType "file" -Value $reset_command
+}
 
 
 $Env:path += "$Home\scoop\shims"
@@ -90,5 +92,5 @@ md "$Home\atk\temp"
 del /q "$Home\atk\temp\setup.rb"
 # download and run the script
 $install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb')
-New-Item -Path . -Name "$Home\atk\temp\setup.rb" -ItemType "file" -Value $install_script
+New-Item -Path . -Path "$Home\atk\temp" -Name "setup.rb" -ItemType "file" -Value $install_script
 ruby setup.rb
