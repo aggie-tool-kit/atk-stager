@@ -62,7 +62,7 @@ sub has_ruby_that_is_at_least {
 }
 
 sub install_ruby_if_needed {
-    if (not has_ruby_that_is_at_least(2,4)) {
+    if (not has_ruby_that_is_at_least(2,5)) {
         # if ubuntu, install ruby
         if (is_a_command("apt-get")) {
             bash "sudo apt-get install ruby <<<'Y'";
@@ -111,16 +111,14 @@ if (is_a_command("apt")) {
 install_git_if_needed();
 install_ruby_if_needed();
 install_atk_toolbox();
-install_python3_and_pip3_if_needed();
-install_asciimatics();
-install_ruamelyaml();
+
 # 
 # run the setup
 # 
 bash <<'HEREDOC';
     mkdir -p ~/atk/temp/
     # download the setup.rb
-    curl -fsSL https://raw.githubusercontent.com/aggie-tool-kit/atk/master/setup/setup.rb > ~/atk/temp/setup.rb
+    curl -fsSL https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb > ~/atk/temp/setup.rb
     # run it
     ruby ~/atk/temp/setup.rb
 HEREDOC

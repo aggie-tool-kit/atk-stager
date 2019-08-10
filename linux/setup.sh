@@ -1,1 +1,1 @@
-which apt-get && sudo apt-get install curl <<<"Y";cd;curl -fs https://raw.githubusercontent.com/aggie-tool-kit/atk/master/setup/linux/setup.pl > setup.pl;perl setup.pl
+which apt-get && sudo apt-get install curl <<<"Y";cd;curl -fs https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/linux/setup.pl > setup.pl;perl setup.pl
