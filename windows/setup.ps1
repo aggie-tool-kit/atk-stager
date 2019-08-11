@@ -9,6 +9,7 @@ if (-not (cmd.exe /c "where scoop")) {
 }
 # make sure the extras bucket is included
 scoop bucket add extras
+scoop bucket add versions
 # go home
 cd $Home
 
