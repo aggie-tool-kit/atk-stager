@@ -29,7 +29,7 @@ set_command("project", FS.read(project_command_download_path))
 
 # the project run alias
 local_command_download_path = ATK.temp_path("local_command.rb")
-FS.download('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/@'      , to: local_command_download_path)
+FS.download('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/_'      , to: local_command_download_path)
 set_command("_", FS.read(local_command_download_path))
 
 # 
