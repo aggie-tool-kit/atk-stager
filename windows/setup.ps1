@@ -7,6 +7,8 @@
 if (-not (cmd.exe /c "where scoop")) {
     iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 }
+# make sure the extras bucket is included
+scoop bucket add extras
 # go home
 cd $Home
 
