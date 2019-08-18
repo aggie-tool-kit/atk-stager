@@ -12,11 +12,12 @@ rbenv versions | grep '2.5.5' || rbenv install 2.5.5
 # put rbenv init in profiles
 touch ~/.bash_profile
 touch ~/.zshenv
-cat ~/.bash_profile | grep "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" || echo "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.bash_profile
-cat ~/.zshenv | grep "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" || echo "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.zshenv
+cat ~/.bash_profile | grep "eval \"\$(rbenv init -)\"" || echo "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.bash_profile
+cat ~/.zshenv | grep "eval \"\$(rbenv init -)\"" || echo "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.zshenv
 rbenv init &>/dev/null
+alias ruby="$(rbenv which ruby)"
+alias gem="$(rbenv which gem)"
 rbenv global 2.5.5
-rbenv shell 2.5.5
 # install the atk_toolbox gem
 gem install atk_toolbox
 # download the setup.rb
