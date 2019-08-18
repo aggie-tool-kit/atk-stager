@@ -7,9 +7,14 @@ mkdir -p ~/atk/temp
 # install git if needed
 which git || brew install git
 # install ruby 2.5.5
-curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
-rbenv versions | grep '2.5.5' || echo 'installing ruby 2.5.5... this might take a little bit' && rbenv install 2.5.5
-rbenv init
+which rbenv || brew install rbenv
+rbenv versions | grep '2.5.5' || rbenv install 2.5.5
+# put rbenv init in profiles
+touch ~/.bash_profile
+touch ~/.zshenv
+cat ~/.bash_profile | grep "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" || echo "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.bash_profile
+cat ~/.zshenv | grep "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" || echo "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.zshenv
+rbenv init &>/dev/null
 rbenv global 2.5.5
 # install the atk_toolbox gem
 gem install atk_toolbox
