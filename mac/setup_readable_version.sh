@@ -16,6 +16,7 @@ cat ~/.bash_profile | grep "which rbenv && eval \"\$(rbenv init -)\" # setup for
 cat ~/.zshenv | grep "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" || echo "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.zshenv
 rbenv init &>/dev/null
 rbenv global 2.5.5
+rbenv shell 2.5.5
 # install the atk_toolbox gem
 gem install atk_toolbox
 # download the setup.rb
