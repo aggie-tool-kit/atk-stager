@@ -19,9 +19,9 @@ alias ruby="$(rbenv which ruby)"
 alias gem="$(rbenv which gem)"
 rbenv global 2.5.5
 # install the atk_toolbox gem
-gem install atk_toolbox
+"$(rbenv which gem)" install atk_toolbox
 # download the setup.rb
-curl -fsSL https://raw.githubusercontent.com/aggie-tool-kit/atk/master/setup/setup.rb > ~/atk/temp/setup.rb
+curl -fsSL https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb > ~/atk/temp/setup.rb
 # run it
-ruby ~/atk/temp/setup.rb
+"$(rbenv which ruby)" ~/atk/temp/setup.rb
 rm ~/atk/temp/setup.rb
