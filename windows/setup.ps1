@@ -2,7 +2,7 @@
     # - check if ruby is already installed, and what version
 
 
-
+Clear-Host
 read-host "Hello!
 
 NOTE 1!
