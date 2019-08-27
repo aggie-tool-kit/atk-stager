@@ -17,10 +17,13 @@ NOTE 2!
         Due to the way Windows CMD works, 
         and since it only happens sometimes,
         it is very difficult to fix.
+NOTE 3
+    This installer will take awhile to complete (~10 minutes)
 
-This installer will take awhile to complete (~10 minutes)
+Press ENTER to continue with the install
 
-Press ENTER to continue with the install"
+
+"
 
 # 
 # install scoop
