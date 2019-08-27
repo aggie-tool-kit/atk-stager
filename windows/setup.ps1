@@ -11,12 +11,13 @@ NOTE 1!
 
 NOTE 2!
     Sometimes this installer stops and you need to press Enter.
-    It normally only happens once, but it happens seemingly at random (no prompt).
+    It normally only happens once after the 'extracting *some package name*' lines.
 
         This is a bug with an external package, and we're working on fixing it. 
         Due to the way Windows CMD works, 
         and since it only happens sometimes,
         it is very difficult to fix.
+
 NOTE 3
     This installer will take awhile to complete (~10 minutes)
 
@@ -101,6 +102,7 @@ $Env:path += "$Home\scoop\shims"
 
 # install git
 scoop install git
+scoop install openssh
 # make sure the extras bucket is included
 scoop bucket add extras
 scoop bucket add versions
