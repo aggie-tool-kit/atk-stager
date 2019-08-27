@@ -7,9 +7,6 @@
 if (-not (cmd.exe /c "where scoop")) {
     iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 }
-# make sure the extras bucket is included
-scoop bucket add extras
-scoop bucket add versions
 # go home
 cd $Home
 
@@ -80,6 +77,9 @@ $Env:path += "$Home\scoop\shims"
 
 # install git
 scoop install git
+# make sure the extras bucket is included
+scoop bucket add extras
+scoop bucket add versions
 # install ruby & gem
 scoop install ruby
 $Env:path += "$Home\scoop\apps\ruby\current\bin"
