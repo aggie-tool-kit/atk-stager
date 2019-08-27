@@ -1,6 +1,27 @@
 # TODO:
     # - check if ruby is already installed, and what version
 
+
+
+read-host "Hello!
+
+NOTE 1!
+    After this install starts, please do not cancel it in the middle.
+    A halfway-installed tool can lead to very difficult to fix bugs.
+
+NOTE 2!
+    Sometimes this installer stops and you need to press Enter.
+    It normally only happens once, but it happens seemingly at random (no prompt).
+
+        This is a bug with an external package, and we're working on fixing it. 
+        Due to the way Windows CMD works, 
+        and since it only happens sometimes,
+        it is very difficult to fix.
+
+This installer will take awhile to complete (~10 minutes)
+
+Press ENTER to continue with the install"
+
 # 
 # install scoop
 # 
