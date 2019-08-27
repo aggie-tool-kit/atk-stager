@@ -7,6 +7,7 @@ read-host "Hello!
 
 NOTE 1!
     After this install starts, please do not cancel it in the middle.
+    Even if you see errors, let the installer handle the errors.
     A halfway-installed tool can lead to very difficult to fix bugs.
 
 NOTE 2!
