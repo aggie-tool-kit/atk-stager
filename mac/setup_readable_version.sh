@@ -9,6 +9,7 @@ which git || brew install git
 # install ruby 2.5.5
 which rbenv || brew install rbenv
 rbenv versions | grep '2.5.5' || rbenv install 2.5.5
+rbenv global 2.5.5
 # put rbenv init in profiles
 touch ~/.bash_profile
 touch ~/.zshenv
@@ -17,7 +18,8 @@ cat ~/.zshenv | grep "eval \"\$(rbenv init -)\"" || echo "which rbenv && eval \"
 rbenv init &>/dev/null
 alias ruby="$(rbenv which ruby)"
 alias gem="$(rbenv which gem)"
-rbenv global 2.5.5
+# create a symlink to ruby
+ln -s \"/Users/$(whoami)/.rbenv/shims/ruby\" /usr/local/bin/ruby
 # install the atk_toolbox gem
 "$(rbenv which gem)" install atk_toolbox
 # download the setup.rb
