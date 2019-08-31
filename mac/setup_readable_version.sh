@@ -18,7 +18,7 @@ cat ~/.zshenv | grep "eval \"\$(rbenv init -)\"" || echo "which rbenv && eval \"
 rbenv init &>/dev/null
 alias ruby="$(rbenv which ruby)"
 alias gem="$(rbenv which gem)"
-# create a symlink to ruby
+# create a symlink to ruby to prevent bugs in random applications
 ln -s \"/Users/$(whoami)/.rbenv/shims/ruby\" /usr/local/bin/ruby
 # install the atk_toolbox gem
 "$(rbenv which gem)" install atk_toolbox
