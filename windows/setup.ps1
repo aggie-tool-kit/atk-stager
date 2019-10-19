@@ -97,20 +97,34 @@ goto main
 if (-not (cmd.exe /c "where RefreshEnv")) {
     New-Item -Path "$Home\AppData\local\Microsoft\WindowsApps\" -Name "RefreshEnv.cmd" -ItemType "file" -Value $reset_command
 }
-
+function ExitIfFailed { 
+    if ($?) { } else { echo "There was an error when performing the install. There should be other output included above"; exit 1 } 
+}
 
 $Env:path += "$Home\scoop\shims"
 
 # install git
+scoop uninstall 7zip # for saftey reasons
+scoop install 7zip
+ExitIfFailed
+
+scoop uninstall git
 scoop install git
+ExitIfFailed
+
+scoop uninstall openssh
 scoop install openssh
+ExitIfFailed
 # make sure the extras bucket is included
 scoop bucket add extras
 scoop bucket add versions
 # install ruby & gem
+scoop uninstall ruby
 scoop install ruby
+ExitIfFailed
 $Env:path += "$Home\scoop\apps\ruby\current\bin"
 # setup msys2 (for ruby)
+scoop uninstall msys2
 scoop install msys2
 "exit
 " | msys2
