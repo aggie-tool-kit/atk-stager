@@ -103,7 +103,7 @@ function ExitIfFailed {
 
 $Env:path += "$Home\scoop\shims"
 
-# use a better proto
+# use a better protocol to fix a bug
 ​[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 # install git
