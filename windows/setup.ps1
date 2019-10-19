@@ -6,12 +6,11 @@ Clear-Host
 read-host "Hello!
 
 NOTE 1!
-    After this install starts, please do not cancel it in the middle.
     Even if you see errors, let the installer handle the errors.
-    A halfway-installed tool can be really difficult to fix.
+    If you canel in the middle, a halfway-installed tool can be really difficult to fix.
 
 NOTE 2!
-    Sometimes this installer stops and you need to press Enter.
+    Sometimes YOU NEED TO PRESS ENTER at random times. There will not be a prompt.
     It normally only happens once after the 'extracting *some package name*' lines.
 
         This is a bug with an external package, and we're working on fixing it. 
