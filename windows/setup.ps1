@@ -103,6 +103,9 @@ function ExitIfFailed {
 
 $Env:path += "$Home\scoop\shims"
 
+# use a better proto
+​[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 # install git
 scoop uninstall 7zip # for saftey reasons
 scoop install 7zip
