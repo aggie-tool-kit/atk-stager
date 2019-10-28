@@ -7,7 +7,7 @@ read-host "Hello!
 
 NOTE 1!
     Even if you see errors, let the installer handle the errors.
-    If you canel in the middle, a halfway-installed tool can be really difficult to fix.
+    If you cancel in the middle, a halfway-installed tool can be really difficult to fix.
 
 NOTE 2!
     Sometimes YOU NEED TO PRESS ENTER at random times. There will not be a prompt.
