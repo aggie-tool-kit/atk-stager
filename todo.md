@@ -1,7 +1,28 @@
-Current Plan:
-- test installtion on linux
-- get the update command working
-- test the update command on all OS's
+### Current Plan
+- create a uninstall method
+- allow ENV variables to be set before commands are run
+- add support for installing sub dependencies
+  - create hashes of package.json, requirements.txt, gemfile, and the atk-dependencies
+  - any time the hashes change, try to run their respective install commands
+  - check the versions of the atk-dependencies
+- allow the commands key to be a script
+- add hooks into the project commands
+
+
+### Major
+- rework the install system: have it based on binary names and version checking
+- create the system for a bash-profile overwriter
+  - startup scripts
+  - ENV variables
+  - PATH additions
+  - alias commands
+- create the atk_toolbox for javascript
+- create the atk_toolbox for python
+- create a YAML editor
+
+
+
+### Old objectives
 - create a versioning system for atk
 - create a seperate organization for atk-core
 - create a package
