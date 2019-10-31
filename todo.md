@@ -5,6 +5,7 @@
   - create hashes of package.json, requirements.txt, gemfile, and the atk-dependencies
   - any time the hashes change, try to run their respective install commands
   - check the versions of the atk-dependencies
+- maybe create downloadable info.yaml templates
 - allow the commands key to be a script
 - add hooks into the project commands
 
