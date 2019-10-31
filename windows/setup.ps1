@@ -143,8 +143,15 @@ Remove-Item -Path "$Home\atk\temp\setup.rb" -Force -ErrorAction SilentlyContinue
 $install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb')
 New-Item -Path "$Home\atk\temp" -Name "setup.rb" -ItemType "file" -Value $install_script
 ruby "$Home\atk\temp\setup.rb"
-echo "
+Clear-Host
+read-host "
+-------------------------------------
+ATK should be successfully installed!
+-------------------------------------
 
-Please close and reopen CMD for the changes to take affect.
+1. CMD needs to be restarted
+2. If you have VS Code (or other command lines) they will also need to be restarted
 
+Press ENTER to close this prompt
 "
+exit
