@@ -20,17 +20,17 @@ end
 # atk
 atk_command_download_path = ATK.temp_path("atk.rb")
 FS.download('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/atk'     , to: atk_command_download_path)
-set_command("atk", FS.read(atk_command_download_path))
+Console.set_command("atk", FS.read(atk_command_download_path))
 
 # project
 project_command_download_path = ATK.temp_path("project.rb")
 FS.download('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/project' , to: project_command_download_path)
-set_command("project", FS.read(project_command_download_path))
+Console.set_command("project", FS.read(project_command_download_path))
 
 # the project run alias
 local_command_download_path = ATK.temp_path("local_command.rb")
 FS.download('https://raw.githubusercontent.com/aggie-tool-kit/atk/master/_'      , to: local_command_download_path)
-set_command("_", FS.read(local_command_download_path))
+Console.set_command("_", FS.read(local_command_download_path))
 
 # 
 # print success
