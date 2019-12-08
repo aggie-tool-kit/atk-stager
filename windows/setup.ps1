@@ -2,9 +2,35 @@
     # - check if ruby is already installed, and what version
     # - use scoop reset instead of uninstalling things
 
+# change the powershell theme to use a black background instead of dark magenta
+while (-not $host.ui.rawui.backgroundcolor.equals("Black")) {
+    Clear-Host
+    read-host "
+    
+    Hello!
+    
+    There's a bit of a problem, but there's an easy fix!
+    
+    Powershell has an issue with colors
+    The issue has been posted here for several years
+    https://github.com/microsoft/Terminal/issues/23
+    As far as I know, there's still no way to fix it from a program
+    (Please go complain so they will finally fix it)
+    
+    If you could
+    1. go to the top bar of this powershell
+    2. right click and then select 'properties'
+    3. go to the 'colors' tab
+    4. select 'Screen Background'
+    5. select the black color (far left)
+    
+    That will prevent the screen from turning purple
+    [press enter to continue]"
+}
+Clear-Host
 
 # 
-# Get the color tool so the colors are not messed up
+# Set Color Theme
 # 
 $file = "https://github.com/microsoft/terminal/releases/download/1708.14008/colortool.zip"
 $zip_destination = "$Home/colortool.zip"
