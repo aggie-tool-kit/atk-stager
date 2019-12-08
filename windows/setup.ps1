@@ -19,11 +19,11 @@ while (-not $host.ui.rawui.backgroundcolor.equals([System.ConsoleColor]::Black))
     
     If you could
     1. go to the top bar of this powershell
-    2. right click and then select 'properties'
+    2. right click and then select 'Properties'
     3. go to the 'colors' tab
     4. select 'Screen Background'
     5. select the black color (far left)
-    6. then click 'Okay'
+    6. then click 'Ok'
     
     That will prevent the screen from turning purple later on
     [press enter to continue]"
