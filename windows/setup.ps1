@@ -6,31 +6,36 @@
 # introduction
 # 
 # 
-
+$e = [char]0x001B
+$clear = "$e[0m"
+$blue = "$e[0;34;49m"
+$red =  "$e[0;31;49m"
+$green = "$e[0;32;49m"
+$yellow = "$e[0;33;49m"
 Clear-Host
 read-host "
-Hello!
+$($yellow)Hello!$clear
     This will be super easy,
     but I need to make sure you understand a few things
 
-$([char]0x0048)[0;34;49m[press enter to continue]$([char]0x0048)[0m"
+$blue[press enter to continue]$clear"
 
 Clear-Host
 read-host "
-NOTE 1 of 2
-    $([char]0x0048)[0;31;49mIf the process seems stuck try pressing enter$([char]0x0048)[0m
+$($yellow)NOTE 1 of 2$clear
+    $($red)If the process seems stuck try pressing enter$clear
 
 This is a bug with an external package, and we're working on fixing it. 
 Due to the way Windows CMD works,
 and since it only happens sometimes,
 it is very difficult to fix.
 
-$([char]0x0048)[0;34;49m[press enter to continue]$([char]0x0048)[0m"
+$blue[press enter to continue]$clear"
 
 Clear-Host
 read-host "
-NOTE 2 of 2
-    This can take awhile to complete $([char]0x0048)[0;31;49m(~10 minutes)$([char]0x0048)[0m
+$($yellow)NOTE 2 of 2$clear
+    This can take awhile to complete $red(~10 minutes)$clear
 
 The time can be less than 30 seconds if you already have some of the tools installed
 
@@ -38,13 +43,13 @@ I recommend watching a ~7min YouTube video that
 explains why MacOS & Linux are vastly superior to Windows
 and then checking on the process to see if you need to press enter
 
-$([char]0x0048)[0;34;49m[press enter to continue]$([char]0x0048)[0m"
+$e[0;34;49m[press enter to continue]$clear"
 
 Clear-Host
 read-host "
 
-$([char]0x0048)[0;31;49mTo cancel:$([char]0x0048)[0m press CTRL + C
-$([char]0x0048)[0;32;49mTo begin:$([char]0x0048)[0m press enter MULTIPLE (2-3) TIMES
+$($red)To cancel:$clear press CTRL + C
+$($green)To begin:$clear press enter MULTIPLE (2-3) TIMES
 (this is to help counteract the bug)"
 
 function ExitIfFailed { 
