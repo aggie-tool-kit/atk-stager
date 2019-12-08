@@ -3,7 +3,7 @@
     # - use scoop reset instead of uninstalling things
 
 # change the powershell theme to use a black background instead of dark magenta
-while (-not $host.ui.rawui.backgroundcolor.equals("Black")) {
+while (-not $host.ui.rawui.backgroundcolor.equals([System.ConsoleColor]::Black)) {
     Clear-Host
     read-host "
     
@@ -14,8 +14,8 @@ while (-not $host.ui.rawui.backgroundcolor.equals("Black")) {
     Powershell has an issue with colors
     The issue has been posted here for several years
     https://github.com/microsoft/Terminal/issues/23
-    As far as I know, there's still no way to fix it from a program
     (Please go complain so they will finally fix it)
+    As far as I know, there's still no way to fix it from a program
     
     If you could
     1. go to the top bar of this powershell
@@ -23,9 +23,16 @@ while (-not $host.ui.rawui.backgroundcolor.equals("Black")) {
     3. go to the 'colors' tab
     4. select 'Screen Background'
     5. select the black color (far left)
+    6. then click 'Okay'
     
-    That will prevent the screen from turning purple
+    That will prevent the screen from turning purple later on
     [press enter to continue]"
+    
+    if (-not $host.ui.rawui.backgroundcolor.equals([System.ConsoleColor]::Black)) {
+        Clear-Host
+        read-host "it appears the setting as still not changed
+        [press enter to continue]"
+    }
 }
 Clear-Host
 
