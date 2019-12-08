@@ -107,7 +107,7 @@ ExitIfFailed
 $Env:path += "$Home\scoop\apps\ruby\current\bin"
 # setup msys2 (for ruby)
 scoop uninstall msys2 *>$null
-scoop install msys2
+scoop install msys2 *>$null
 "exit
 " | msys2
 
@@ -136,7 +136,7 @@ ExitIfFailed
 # this command opens a new CMD with the message in it
 $file_name = "___AtkPrintDone.bat"
 $print_command = @"
-    Start cmd /k "echo ============================== & echo '        ATK Installed' & echo ==============================" 
+    Start cmd /k "echo ============================== & echo '        ATK Installed       ' & echo ============================== & echo Close and reopen CMD for changes to take effect" 
     Remove-Item "$Home\AppData\local\Microsoft\WindowsApps\$file_name" -erroraction 'silentlycontinue'
 "@
 # remove the old print statement if there was one
