@@ -1,136 +1,114 @@
 # TODO:
     # - check if ruby is already installed, and what version
 
+# 
+# 
+# introduction
+# 
+# 
 
 Clear-Host
-read-host "Hello!
+read-host "
+Hello!
+    This will be super easy,
+    but I need to make sure you understand a few things
 
-NOTE 1!
-    Even if you see errors, let the installer handle the errors.
-    If you cancel in the middle, a halfway-installed tool can be really difficult to fix.
+$([char]0x0048)[0;34;49m[press enter to continue]$([char]0x0048)[0m"
 
-NOTE 2!
-    Sometimes YOU NEED TO PRESS ENTER at random times. There will not be a prompt.
-    It normally only happens once after the 'extracting *some package name*' lines.
+Clear-Host
+read-host "
+NOTE 1 of 2
+    $([char]0x0048)[0;31;49mIf the process seems stuck try pressing enter$([char]0x0048)[0m
 
-        This is a bug with an external package, and we're working on fixing it. 
-        Due to the way Windows CMD works, 
-        and since it only happens sometimes,
-        it is very difficult to fix.
+This is a bug with an external package, and we're working on fixing it. 
+Due to the way Windows CMD works,
+and since it only happens sometimes,
+it is very difficult to fix.
 
-NOTE 3
-    This installer will take awhile to complete (~10 minutes)
+$([char]0x0048)[0;34;49m[press enter to continue]$([char]0x0048)[0m"
 
-Press ENTER to continue with the install
+Clear-Host
+read-host "
+NOTE 2 of 2
+    This can take awhile to complete $([char]0x0048)[0;31;49m(~10 minutes)$([char]0x0048)[0m
 
+The time can be less than 30 seconds if you already have some of the tools installed
 
-"
+I recommend watching a ~7min YouTube video that
+explains why MacOS & Linux are vastly superior to Windows
+and then checking on the process to see if you need to press enter
+
+$([char]0x0048)[0;34;49m[press enter to continue]$([char]0x0048)[0m"
+
+Clear-Host
+read-host "
+
+$([char]0x0048)[0;31;49mTo cancel:$([char]0x0048)[0m press CTRL + C
+$([char]0x0048)[0;32;49mTo begin:$([char]0x0048)[0m press enter MULTIPLE (2-3) TIMES
+(this is to help counteract the bug)"
+
+function ExitIfFailed { 
+    if ($?) { } else { echo "There was an error when performing the install. There is likely details included above"; exit 1 } 
+}
 
 # 
 # install scoop
 # 
+echo "================================="
+echo "Checking/installing scoop"
+echo "================================="
 if (-not (cmd.exe /c "where scoop")) {
     iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 }
-# go home
-cd $Home
-
-
-$reset_command = @"
-@echo off
-::
-:: RefreshEnv.cmd
-::
-:: Batch file to read environment variables from registry and
-:: set session variables to these values.
-::
-:: With this batch file, there should be no need to reload command
-:: environment every time you want environment changes to propagate
-
-echo | set /p dummy="Reading environment variables from registry. Please wait... "
-
-goto main
-
-:: Set one environment variable from registry key
-:SetFromReg
-    "%WinDir%\System32\Reg" QUERY "%~1" /v "%~2" > "%TEMP%\_envset.tmp" 2>NUL
-    for /f "usebackq skip=2 tokens=2,*" %%A IN ("%TEMP%\_envset.tmp") do (
-        echo/set %~3=%%B
-    )
-    goto :EOF
-
-:: Get a list of environment variables from registry
-:GetRegEnv
-    "%WinDir%\System32\Reg" QUERY "%~1" > "%TEMP%\_envget.tmp"
-    for /f "usebackq skip=2" %%A IN ("%TEMP%\_envget.tmp") do (
-        if /I not "%%~A"=="Path" (
-            call :SetFromReg "%~1" "%%~A" "%%~A"
-        )
-    )
-    goto :EOF
-
-:main
-    echo/@echo off >"%TEMP%\_env.cmd"
-
-    :: Slowly generating final file
-    call :GetRegEnv "HKLM\System\CurrentControlSet\Control\Session Manager\Environment" >> "%TEMP%\_env.cmd"
-    call :GetRegEnv "HKCU\Environment">>"%TEMP%\_env.cmd" >> "%TEMP%\_env.cmd"
-
-    :: Special handling for PATH - mix both User and System
-    call :SetFromReg "HKLM\System\CurrentControlSet\Control\Session Manager\Environment" Path Path_HKLM >> "%TEMP%\_env.cmd"
-    call :SetFromReg "HKCU\Environment" Path Path_HKCU >> "%TEMP%\_env.cmd"
-
-    :: Caution: do not insert space-chars before >> redirection sign
-    echo/set Path=%%Path_HKLM%%;%%Path_HKCU%% >> "%TEMP%\_env.cmd"
-
-    :: Cleanup
-    del /f /q "%TEMP%\_envset.tmp" 2>nul
-    del /f /q "%TEMP%\_envget.tmp" 2>nul
-
-    :: Set these variables
-    call "%TEMP%\_env.cmd"
-
-    echo | set /p dummy="Done"
-    echo .
-"@
-if (-not (cmd.exe /c "where RefreshEnv")) {
-    New-Item -Path "$Home\AppData\local\Microsoft\WindowsApps\" -Name "RefreshEnv.cmd" -ItemType "file" -Value $reset_command
-}
-function ExitIfFailed { 
-    if ($?) { } else { echo "There was an error when performing the install. There should be other output included above"; exit 1 } 
-}
-
 $Env:path += "$Home\scoop\shims"
 
-# use a better protocol to fix a bug
+# 
+# install 7zip
+# 
+# use a better protocol to prevent a bug
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+echo "Checking/installing 7zip"
+scoop uninstall 7zip *>$null # uninstall encase there was a previous failure
+scoop install 7zip *>$null 
+ExitIfFailed
 
+# 
 # install git
-scoop uninstall 7zip # for saftey reasons
-scoop install 7zip
+# 
+echo "Checking/installing git"
+scoop uninstall git *>$null # uninstall encase there was a previous failure
+scoop install git *>$null
+ExitIfFailed
+# install openssh (for git)
+echo "Checking/installing openssh"
+scoop uninstall openssh *>$null
+scoop install openssh *>$null
 ExitIfFailed
 
-scoop uninstall git
-scoop install git
-ExitIfFailed
-
-scoop uninstall openssh
-scoop install openssh
-ExitIfFailed
+# 
+# finish scoop setup
+# 
 # make sure the extras bucket is included
-scoop bucket add extras
-scoop bucket add versions
+scoop bucket add extras *>$null
+scoop bucket add versions *>$null
+
+# 
 # install ruby & gem
-scoop uninstall ruby
-scoop install ruby
+# 
+echo "Checking/installing ruby"
+scoop uninstall ruby *>$null
+scoop install ruby *>$null
 ExitIfFailed
 $Env:path += "$Home\scoop\apps\ruby\current\bin"
 # setup msys2 (for ruby)
-scoop uninstall msys2
+scoop uninstall msys2 *>$null
 scoop install msys2
 "exit
 " | msys2
-# install atk_toolbox
+
+# 
+# install atk_toolbox 
+# 
 & "$Home\scoop\apps\ruby\current\bin\gem.cmd" install atk_toolbox
 # create the atk temp directory if it doesn't exist
 $temp_dir = "$Home\atk\temp"
@@ -138,20 +116,23 @@ if(!(Test-Path -Path $temp_dir )){
     md $temp_dir
 }
 # delete any previous setup
-Remove-Item -Path "$Home\atk\temp\setup.rb" -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "$Home\atk\temp\setup.rb" -Force -ErrorAction SilentlyContinue *>$null
 # download and run the script
 $install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb')
 New-Item -Path "$Home\atk\temp" -Name "setup.rb" -ItemType "file" -Value $install_script
 ruby "$Home\atk\temp\setup.rb"
-Clear-Host
-read-host "
--------------------------------------
-ATK should be successfully installed!
--------------------------------------
+ExitIfFailed
 
-1. CMD needs to be restarted
-2. If you have VS Code (or other command lines) they will also need to be restarted
 
-Press ENTER to close this prompt
-"
-exit
+# 
+# Create the success-window script
+# 
+# this command opens a new CMD with the message in it
+$print_command = @"
+    Start cmd /k "echo ============================== & echo '        ATK Installed' & echo ==============================" 
+"@
+$file_name = "___AtkPrintDone.bat"
+# remove the old print statement if there was one
+Remove-Item "$Home\AppData\local\Microsoft\WindowsApps\$file_name" -erroraction 'silentlycontinue' *>$null
+# create the new one
+New-Item -Path "$Home\AppData\local\Microsoft\WindowsApps\" -Name "$file_name" -ItemType "file" -Value $print_command
