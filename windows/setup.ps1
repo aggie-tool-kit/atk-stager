@@ -72,7 +72,7 @@ $Env:path += "$Home\scoop\shims"
 # 
 # use a better protocol to prevent a bug
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-echo "Checking/installing 7zip"
+echo "Checking/installing $($green)7zip$clear"
 scoop uninstall 7zip *>$null # uninstall encase there was a previous failure
 scoop install 7zip *>$null 
 ExitIfFailed
@@ -80,12 +80,12 @@ ExitIfFailed
 # 
 # install git
 # 
-echo "Checking/installing git"
+echo "Checking/installing $($green)git$clear"
 scoop uninstall git *>$null # uninstall encase there was a previous failure
 scoop install git *>$null
 ExitIfFailed
 # install openssh (for git)
-echo "Checking/installing openssh"
+echo "Checking/installing $($green)openssh$clear"
 scoop uninstall openssh *>$null
 scoop install openssh *>$null
 ExitIfFailed
@@ -100,7 +100,7 @@ scoop bucket add versions *>$null
 # 
 # install ruby & gem
 # 
-echo "Checking/installing ruby"
+echo "Checking/installing $($green)ruby$clear"
 scoop uninstall ruby *>$null
 scoop install ruby *>$null
 ExitIfFailed
@@ -114,6 +114,7 @@ scoop install msys2
 # 
 # install atk_toolbox 
 # 
+echo "Installing the $($green)atk_toolbox$clear"
 & "$Home\scoop\apps\ruby\current\bin\gem.cmd" install atk_toolbox
 # create the atk temp directory if it doesn't exist
 $temp_dir = "$Home\atk\temp"
