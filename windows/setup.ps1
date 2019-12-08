@@ -95,9 +95,11 @@ ExitIfFailed
 # install git
 # 
 echo "Checking/installing $($green)git$clear"
-scoop uninstall git *>$null # uninstall encase there was a previous failure
-scoop install git *>$null
-ExitIfFailed
+if (-not (cmd.exe /c "where git")) {
+    scoop uninstall git *>$null # uninstall encase there was a previous failure
+    scoop install git *>$null
+    ExitIfFailed
+}
 # install openssh (for git)
 echo "Checking/installing $($green)openssh$clear"
 scoop uninstall openssh *>$null
