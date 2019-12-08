@@ -1,5 +1,6 @@
 # TODO:
     # - check if ruby is already installed, and what version
+    # - use scoop reset instead of uninstalling things
 
 # 
 # 
@@ -125,7 +126,7 @@ if(!(Test-Path -Path $temp_dir )){
 Remove-Item -Path "$Home\atk\temp\setup.rb" -Force -ErrorAction SilentlyContinue *>$null
 # download and run the script
 $install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb')
-New-Item -Path "$Home\atk\temp" -Name "setup.rb" -ItemType "file" -Value $install_script
+New-Item -Path "$Home\atk\temp" -Name "setup.rb" -ItemType "file" -Value $install_script *>$null
 ruby "$Home\atk\temp\setup.rb"
 ExitIfFailed
 
@@ -142,4 +143,4 @@ $print_command = @"
 # remove the old print statement if there was one
 Remove-Item "$Home\AppData\local\Microsoft\WindowsApps\$file_name" -erroraction 'silentlycontinue' *>$null
 # create the new one
-New-Item -Path "$Home\AppData\local\Microsoft\WindowsApps\" -Name "$file_name" -ItemType "file" -Value $print_command
+New-Item -Path "$Home\AppData\local\Microsoft\WindowsApps\" -Name "$file_name" -ItemType "file" -Value $print_command *>$null
