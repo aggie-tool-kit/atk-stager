@@ -1,20 +1,21 @@
+function is_command { command -v "$@" >/dev/null 2>& }
 # ask for password early on
 sudo echo ""
 # install homebrew if not installed
-which brew || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+is_command brew || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # create the temp dir
 mkdir -p ~/atk/temp
 # install git if needed
-which git || brew install git
+is_command git || brew install git
 # install ruby 2.5.5
-which rbenv || brew install rbenv
+is_command rbenv || brew install rbenv
 rbenv versions | grep '2.5.5' || rbenv install 2.5.5
 rbenv global 2.5.5
 # put rbenv init in profiles
 touch ~/.bash_profile
 touch ~/.zshenv
-cat ~/.bash_profile | grep "eval \"\$(rbenv init -)\"" || echo "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.bash_profile
-cat ~/.zshenv | grep "eval \"\$(rbenv init -)\"" || echo "which rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.zshenv
+cat ~/.bash_profile | grep "eval \"\$(rbenv init -)\"" || echo "is_command rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.bash_profile
+cat ~/.zshenv | grep "eval \"\$(rbenv init -)\"" || echo "is_command rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.zshenv
 rbenv init &>/dev/null
 alias ruby="$(rbenv which ruby)"
 alias gem="$(rbenv which gem)"
