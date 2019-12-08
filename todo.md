@@ -1,13 +1,16 @@
 ### Current Plan
-- create a uninstall method
-- allow ENV variables to be set before commands are run
+- remove the mac/windows/linux option from the info.yaml, demo it with ruby instead
+- create force push force pull on `project`
+- create templates for websites, C++, python, and ruby
 - add support for installing sub dependencies
   - create hashes of package.json, requirements.txt, gemfile, and the atk-dependencies
   - any time the hashes change, try to run their respective install commands
   - check the versions of the atk-dependencies
+- create tool for adding content to the bash profile/powershell profile
 - maybe create downloadable info.yaml templates
 - allow the commands key to be a script
 - add hooks into the project commands
+- allow ENV variables to be set in the info.yaml
 
 
 ### Major
