@@ -1,6 +1,6 @@
-function is_command { command -v "$@" >/dev/null 2>& }
+function is_command { command -v "$@" >/dev/null 2>&1; }
 # ask for password early on
-sudo echo ""
+sudo echo "" || exit
 # install homebrew if not installed
 is_command brew || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # create the temp dir
@@ -15,6 +15,7 @@ rbenv global 2.5.5
 touch ~/.bash_profile
 touch ~/.zshenv
 cat ~/.bash_profile | grep "eval \"\$(rbenv init -)\"" || echo "is_command rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.bash_profile
+cat ~/.bash_profile | grep "atk___completions" || echo 'atk___completions() { COMPREPLY=($(compgen -W "$(ruby -e '"'"'require File.dirname(Gem.find_latest_files("atk_toolbox")[0])+"/atk/autocomplete.rb"; Atk.autocomplete("_")'"'"')" "${COMP_WORDS[1]}")); };complete -F atk___completions _' >> ~/.bash_profile
 cat ~/.zshenv | grep "eval \"\$(rbenv init -)\"" || echo "is_command rbenv && eval \"\$(rbenv init -)\" # setup for ruby" >> ~/.zshenv
 rbenv init &>/dev/null
 alias ruby="$(rbenv which ruby)"
