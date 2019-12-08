@@ -18,12 +18,12 @@ while (-not $host.ui.rawui.backgroundcolor.equals([System.ConsoleColor]::Black))
     As far as I know, there's still no way to fix it from a program
     
     If you could
-    1. go to the top bar of this powershell
-    2. right click and then select 'Properties'
-    3. go to the 'colors' tab
-    4. select 'Screen Background'
-    5. select the black color (far left)
-    6. then click 'Ok'
+    1. Go to the top bar of this powershell
+    2. Right click and then select 'Properties'
+    3. Go to the 'colors' tab
+    4. Select 'Screen Background'
+    5. Select the black color (far left)
+    6. Then click 'OK'
     
     That will prevent the screen from turning purple later on
     [press enter to continue]"
@@ -72,7 +72,7 @@ read-host "
 $($yellow)NOTE 1 of 2$clear
     $($red)If the process seems stuck try pressing enter$clear
 
-This is a bug with an external package, and we're working on fixing it. 
+This is a bug with an external package, and we've been trying to create a workaround
 Due to the way Windows CMD works,
 and since it only happens sometimes,
 it is very difficult to fix.
