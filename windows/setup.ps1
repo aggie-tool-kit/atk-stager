@@ -8,8 +8,7 @@ if (-not $host.ui.rawui.backgroundcolor.equals([System.ConsoleColor]::Black)) {
 $atk_command = @"
 powershell -command "Set-ExecutionPolicy RemoteSigned -scope CurrentUser; iex (new-object net.webclient).downloadstring('https://git.io/fj7gT')" & ___AtkPrintDone.bat & exit
 "@
-    Start cmd "/k $atk_command"
-    read-host "Installation is occuring in a new window"
+    start cmd.exe "/k $atk_command"
     exit
 }
 
