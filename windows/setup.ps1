@@ -169,6 +169,9 @@ scoop uninstall msys2 *>$null
 scoop install msys2 *>$null
 "exit
 " | msys2
+# TODO: create the file assocation so that ruby files are executable
+# cmd "/c assoc .rb=RubyScript"
+# cmd "/c ftype RubyScript=$Home\scoop\apps\ruby\current\bin\ruby.exe %1 %*"
 
 # 
 # install atk_toolbox 
