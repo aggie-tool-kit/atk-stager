@@ -9,6 +9,9 @@ mkdir -p ~/atk/temp
 is_command git || brew install git
 # install ruby 2.5.5
 is_command rbenv || brew install rbenv
+# update rbenv if needed
+rbenv install --list | grep '^2.5.5' || brew upgrade rbenv
+# install ruby 2.5.5 if needed
 rbenv versions | grep '2.5.5' || rbenv install 2.5.5
 rbenv global 2.5.5
 # put rbenv init in profiles
