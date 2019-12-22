@@ -111,10 +111,3 @@ if (is_a_command("apt")) {
 install_git_if_needed();
 install_ruby_if_needed();
 install_atk_toolbox();
-
-# 
-# run the setup
-# 
-bash <<'HEREDOC';
-    ruby -e 'require "atk_toolbox"; Atk.install()'
-HEREDOC
