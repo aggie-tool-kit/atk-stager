@@ -178,16 +178,12 @@ scoop install msys2 *>$null
 # 
 echo "Installing the $($green)atk_toolbox$clear"
 & "$Home\scoop\apps\ruby\current\bin\gem.cmd" install atk_toolbox
+ExitIfFailed
 # create the atk temp directory if it doesn't exist
 $temp_dir = "$Home\atk\temp"
 if(!(Test-Path -Path $temp_dir )){
     md $temp_dir
 }
-# delete any previous setup
-Remove-Item -Path "$Home\atk\temp\setup.rb" -Force -ErrorAction SilentlyContinue *>$null
-# run the install
-ruby -e 'require "atk_toolbox"; Atk.install()'
-ExitIfFailed
 
 
 # 
