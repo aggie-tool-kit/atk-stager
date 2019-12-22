@@ -185,10 +185,8 @@ if(!(Test-Path -Path $temp_dir )){
 }
 # delete any previous setup
 Remove-Item -Path "$Home\atk\temp\setup.rb" -Force -ErrorAction SilentlyContinue *>$null
-# download and run the script
-$install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb')
-New-Item -Path "$Home\atk\temp" -Name "setup.rb" -ItemType "file" -Value $install_script *>$null
-ruby "$Home\atk\temp\setup.rb"
+# run the install
+ruby -e 'require "atk_toolbox"; Atk.install()'
 ExitIfFailed
 
 
