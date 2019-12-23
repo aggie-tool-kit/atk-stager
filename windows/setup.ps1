@@ -184,6 +184,11 @@ $temp_dir = "$Home\atk\temp"
 if(!(Test-Path -Path $temp_dir )){
     md $temp_dir
 }
+# delete any previous setup
+Remove-Item -Path "$Home\atk\temp\setup.rb" -Force -ErrorAction SilentlyContinue *>$null
+# run the install
+ruby -e 'require File.dirname(Gem.find_latest_files("atk_toolbox")[0])+"/after_gem_update.rb"'
+ExitIfFailed
 
 
 # 

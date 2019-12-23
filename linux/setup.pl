@@ -111,3 +111,10 @@ if (is_a_command("apt")) {
 install_git_if_needed();
 install_ruby_if_needed();
 install_atk_toolbox();
+
+# 
+# run the setup
+# 
+bash <<'HEREDOC';
+    ruby -e 'require File.dirname(Gem.find_latest_files("atk_toolbox")[0])+"/after_gem_update.rb"'
+HEREDOC
