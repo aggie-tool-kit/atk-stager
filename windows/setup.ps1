@@ -161,7 +161,7 @@ scoop bucket add versions *>$null
 # 
 echo "Checking/installing $($green)ruby$clear"
 scoop uninstall ruby *>$null
-scoop install ruby *>$null
+scoop install ruby25 *>$null
 ExitIfFailed
 $Env:path += "$Home\scoop\apps\ruby\current\bin"
 # setup msys2 (for ruby)
