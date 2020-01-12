@@ -48,3 +48,8 @@ eval `wget -qO- git.io/fj7gk`
 #### More linux support hopefully coming soon.
   </p>
 </details>
+
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; `
+  iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
