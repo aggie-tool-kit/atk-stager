@@ -163,7 +163,7 @@ echo "Checking/installing $($green)ruby$clear"
 scoop uninstall ruby *>$null
 scoop install ruby25 *>$null
 ExitIfFailed
-$Env:path += "$Home\scoop\apps\ruby\current\bin"
+$Env:path += "$Home\scoop\apps\ruby25\current\bin"
 # setup msys2 (for ruby)
 scoop uninstall msys2 *>$null
 scoop install msys2 *>$null
@@ -177,7 +177,7 @@ scoop install msys2 *>$null
 # install atk_toolbox 
 # 
 echo "Installing the $($green)atk_toolbox$clear"
-& "$Home\scoop\apps\ruby\current\bin\gem.cmd" install atk_toolbox
+& "$Home\scoop\apps\ruby25\current\bin\gem.cmd" install atk_toolbox
 ExitIfFailed
 # create the atk temp directory if it doesn't exist
 $temp_dir = "$Home\atk\temp"
