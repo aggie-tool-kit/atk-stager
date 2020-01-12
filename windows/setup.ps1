@@ -178,6 +178,7 @@ scoop install msys2 *>$null
 # 
 echo "Installing the $($green)atk_toolbox$clear"
 & "$Home\scoop\apps\ruby\current\bin\gem.cmd" install atk_toolbox
+ExitIfFailed
 # create the atk temp directory if it doesn't exist
 $temp_dir = "$Home\atk\temp"
 if(!(Test-Path -Path $temp_dir )){
@@ -185,10 +186,8 @@ if(!(Test-Path -Path $temp_dir )){
 }
 # delete any previous setup
 Remove-Item -Path "$Home\atk\temp\setup.rb" -Force -ErrorAction SilentlyContinue *>$null
-# download and run the script
-$install_script = (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb')
-New-Item -Path "$Home\atk\temp" -Name "setup.rb" -ItemType "file" -Value $install_script *>$null
-ruby "$Home\atk\temp\setup.rb"
+# run the install
+ruby -e "require File.dirname(Gem.find_latest_files('atk_toolbox')[0])+'/after_gem_update.rb'"
 ExitIfFailed
 
 

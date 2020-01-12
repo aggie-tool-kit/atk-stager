@@ -1,6 +1,11 @@
 ### Current Plan
-- remove the mac/windows/linux option from the info.yaml, demo it with ruby instead
+- remove the mac/windows/linux option from the info.yaml, do it with ruby instead
 - create force push force pull on `project`
+- move everything inside of the ruby gem repo
+- change the update command to simply update the ruby gem, download/run a script, and perform saftey checks
+- add background colors to all colored text
+- improve the mac installer: add support for zsh and catalina
+- do version checking for 1.0
 - create templates for websites, C++, python, and ruby
 - add support for installing sub dependencies
   - create hashes of package.json, requirements.txt, gemfile, and the atk-dependencies

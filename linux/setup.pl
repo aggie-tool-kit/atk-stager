@@ -116,9 +116,5 @@ install_atk_toolbox();
 # run the setup
 # 
 bash <<'HEREDOC';
-    mkdir -p ~/atk/temp/
-    # download the setup.rb
-    curl -fsSL https://raw.githubusercontent.com/aggie-tool-kit/atk-stager/master/setup.rb > ~/atk/temp/setup.rb
-    # run it
-    ruby ~/atk/temp/setup.rb
+    ruby -e 'require File.dirname(Gem.find_latest_files("atk_toolbox")[0])+"/after_gem_update.rb"'
 HEREDOC
