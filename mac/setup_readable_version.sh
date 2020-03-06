@@ -27,6 +27,6 @@ alias gem="$(rbenv which gem)"
 rm -rf /usr/local/bin/ruby
 ln -s \"/Users/$(whoami)/.rbenv/shims/ruby\" /usr/local/bin/ruby
 # install the atk_toolbox gem
-gem install atk_toolbox
+sudo gem install atk_toolbox
 # run the post-setup
-ruby -e 'require File.dirname(Gem.find_latest_files("atk_toolbox")[0])+"/after_gem_update.rb"'
+sudo ruby -e 'require File.dirname(Gem.find_latest_files("atk_toolbox")[0])+"/after_gem_update.rb"'
