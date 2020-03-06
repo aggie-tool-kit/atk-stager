@@ -194,13 +194,4 @@ ExitIfFailed
 # 
 # Create the success-window script
 # 
-# this command opens a new CMD with the message in it
-$file_name = "___AtkPrintDone.bat"
-$print_command = @"
-    Start cmd /k "echo ============================== & echo '        ATK Installed       ' & echo ============================== & echo Close and reopen CMD for changes to take effect" 
-    Remove-Item "$Home\AppData\local\Microsoft\WindowsApps\$file_name" -erroraction 'silentlycontinue'
-"@
-# remove the old print statement if there was one
-Remove-Item "$Home\AppData\local\Microsoft\WindowsApps\$file_name" -erroraction 'silentlycontinue' *>$null
-# create the new one
-New-Item -Path "$Home\AppData\local\Microsoft\WindowsApps\" -Name "$file_name" -ItemType "file" -Value $print_command *>$null
+Start cmd /k "echo ============================== & echo '        ATK Installed       ' & echo ============================== & echo Close and reopen CMD for changes to take effect" 
